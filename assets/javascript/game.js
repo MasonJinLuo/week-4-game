@@ -12,6 +12,26 @@ function Image () {} //class
 
 function startUp(){
 
+	var randomPokemon = new Array();
+
+	randomPokemon[0] = new Image(); 
+	randomPokemon[0].src = 'assets/images/blastoise.png';
+
+	randomPokemon[1] = new Image();
+	randomPokemon[1].src = 'assets/images/charizard.png';
+
+	randomPokemon[2] = new Image();
+	randomPokemon[2].src = 'assets/images/gyrados.png';
+
+	randomPokemon[3] = new Image();
+	randomPokemon[3].src = 'assets/images/machamp.png';
+
+	randomPokemon[4] = new Image();
+	randomPokemon[4].src = 'assets/images/snorlax.png';
+
+	randomPokemon[5] = new Image();
+	randomPokemon[5].src = 'assets/images/venasaur.png';
+
 	cleanup();
 	
 	var imgArray = new Array();
@@ -28,6 +48,13 @@ function startUp(){
 	imgArray[3] = new Image();
 	imgArray[3].src = 'assets/images/Master Ball.png';
 
+	// function genPokemon() {
+		var currentPokemon = Math.floor(Math.random() * (randomPokemon.length));
+		var imagePokemon = $("<img>");
+		imagePokemon.attr('src', randomPokemon[currentPokemon].src);
+		imagePokemon.addClass("ball-image");
+		$("#randomPokemon").append(imagePokemon);
+	// }
 
 
 //indexTracker.indexOf(randomIndex) -> -1, 0, 1, 2, 3
@@ -70,6 +97,7 @@ function startUp(){
 
     if (counter === randomNum) {
     	caught++;
+    	currentPokemon = Math.floor(Math.random() * (randomPokemon.length));
 		cleanup();
 		startUp();
       
@@ -80,6 +108,7 @@ function startUp(){
 
     else if (counter >= randomNum) {
     	ranaway++;
+    	currentPokemon = Math.floor(Math.random() * (randomPokemon.length));
    		cleanup();
    		startUp();
       
@@ -103,6 +132,7 @@ function cleanup () {
 	$("#caught").text(caught);
 	$("#ranaway").text(ranaway);
 	$("#imageBall").empty();
+	$("#randomPokemon").empty();
 	
 }
 
